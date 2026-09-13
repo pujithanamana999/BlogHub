@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BlogHub - Blogs</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <div class="logo">
+            BlogHub
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="create-blog.html">Create Blog</a>
+            <a href="blogs.html">View Blogs</a>
+            <a href="login.html">Logout</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Blogs Section -->
+    <main class="page">
+
+        <h1>All Blogs</h1>
+
+        <p>
+            Explore blogs shared by the BlogHub community.
+        </p>
+
+
+        <div id="blogsContainer">
+
+            <p>Loading blogs...</p>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>
+            © 2026 BlogHub. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        async function loadBlogs() {
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:5000/api/blogs"
+                );
+
+                const data = await response.json();
+
+                const container =
+                    document.getElementById("blogsContainer");
+
+
+                if (data.blogs.length === 0) {
+
+                    container.innerHTML =
+                        "<p>No blogs available.</p>";
+
+                    return;
+                }
+
+
+                container.innerHTML = "";
+
+
+                data.blogs.forEach(blog => {
+
+                    const blogCard =
+                        document.createElement("div");
+
+                    blogCard.className = "blog-card";
+
+
+                    blogCard.innerHTML = `
+
+                        <h2>${blog.title}</h2>
+
+                        <p>
+                            <strong>Category:</strong>
+                            ${blog.category}
+                        </p>
+
+                        <p>
+                            <strong>Author:</strong>
+                            ${blog.author}
+                        </p>
+
+                        <p>
+                            ${blog.content}
+                        </p>
+
+                    `;
+
+
+                    container.appendChild(blogCard);
+
+                });
+
+            } catch (error) {
+
+                console.error("Error:", error);
+
+                document.getElementById("blogsContainer").innerHTML =
+                    "<p>Unable to load blogs.</p>";
+
+            }
+
+        }
+
+
+        loadBlogs();
+
+    </script>
+
+</body>
+
+</html>

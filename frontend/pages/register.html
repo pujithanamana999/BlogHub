@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +42,7 @@
             </p>
 
 
+            <!-- Register Form -->
             <form id="registerForm">
 
                 <!-- Full Name -->
@@ -131,7 +133,91 @@
     </footer>
 
 
+    <!-- Existing JavaScript -->
     <script src="../js/script.js"></script>
+
+
+    <!-- Registration API Connection -->
+    <script>
+
+        document.getElementById("registerForm").addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+
+            const email = document.getElementById("registerEmail").value;
+
+            const password = document.getElementById("registerPassword").value;
+
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+
+            // Check password match
+            if (password !== confirmPassword) {
+
+                alert("Passwords do not match");
+
+                return;
+
+            }
+
+
+            try {
+
+                const response = await fetch("http://localhost:5000/api/register", {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type": "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        name: name,
+
+                        email: email,
+
+                        password: password
+
+                    })
+
+                });
+
+
+                const data = await response.json();
+
+
+                if (response.ok) {
+
+                    alert(data.message);
+
+                    console.log(data);
+
+                    // Redirect to login page
+                    window.location.href = "login.html";
+
+                } else {
+
+                    alert(data.message);
+
+                }
+
+
+            } catch (error) {
+
+                console.error("Error:", error);
+
+                alert("Unable to connect to backend server");
+
+            }
+
+        });
+
+    </script>
 
 </body>
 

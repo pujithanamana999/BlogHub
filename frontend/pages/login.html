@@ -101,7 +101,43 @@
 
 
     <script src="../js/script.js"></script>
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
 
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    try {
+        const response = await fetch("http://localhost:5000/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert(data.message);
+
+            console.log("Login Response:", data);
+
+            window.location.href = "dashboard.html";
+        } else {
+            alert(data.message);
+        }
+
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Unable to connect to backend server");
+    }
+});
+</script>
 </body>
 
 </html>
