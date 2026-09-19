@@ -1,32 +1,71 @@
 # BlogHub
 
-BlogHub is a responsive frontend Blog Application developed using HTML, CSS, and JavaScript.
+BlogHub is a responsive full-stack Blog Application developed using **HTML, CSS, JavaScript, Node.js, and Express.js**.
 
 ## Project Description
 
-BlogHub allows users to explore blogs, register an account, login, view a dashboard, and create new blog posts.
+BlogHub allows users to register an account, login, access a dashboard, create blog posts, and view blogs.
 
-This project was developed as part of the Codomax Digital Solutions Internship.
+The project was developed as part of the **Codomax Digital Solutions Internship**.
 
 ## Features
 
-- Responsive Home Page
-- User Login Page
-- User Registration Page
-- Dashboard
-- Create Blog Page
-- Blog Categories
-- Responsive Design
-- Basic JavaScript Form Validation
-- Interactive Navigation
+* Responsive Home Page
+* User Registration
+* User Login
+* Dashboard
+* Create Blog
+* View Blogs
+* Blog Categories
+* REST APIs
+* Frontend and Backend Integration
+* Basic JavaScript Form Validation
+* Responsive Design
+* Interactive Navigation
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript
-- VS Code
-- Live Server
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+* VS Code
+* Live Server
+
+### Backend
+
+* Node.js
+* Express.js
+* REST APIs
+* CORS
+* dotenv
+
+## API Endpoints
+
+### User Registration
+
+```text
+POST /api/register
+```
+
+### User Login
+
+```text
+POST /api/login
+```
+
+### Create Blog
+
+```text
+POST /api/blogs
+```
+
+### View Blogs
+
+```text
+GET /api/blogs
+```
 
 ## Project Structure
 
@@ -39,7 +78,8 @@ BlogHub/
 │   │   ├── login.html
 │   │   ├── register.html
 │   │   ├── dashboard.html
-│   │   └── create-blog.html
+│   │   ├── create-blog.html
+│   │   └── blogs.html
 │   │
 │   ├── css/
 │   │   └── style.css
@@ -48,57 +88,61 @@ BlogHub/
 │   │   └── script.js
 │   │
 │   └── images/
-│       ├── blog1.jpg
-│       ├── blog2.jpg
-│       └── blog3.jpg
 │
+├── backend/
+│   ├── controllers/
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   └── blogRoutes.js
+│   │
+│   ├── package.json
+│   └── server.js
+│
+├── .gitignore
 └── README.md
 ```
 
 ## How to Run
 
-1. Download or clone this repository.
-2. Open the project in VS Code.
-3. Open `frontend/pages/index.html`.
-4. Right-click on the file.
-5. Select **Open with Live Server**.
-6. The BlogHub website will open in the browser.
+### Backend
 
-## Pages
+Open the terminal in the project folder:
 
-### Home
+```bash
+cd backend
+npm install
+node server.js
+```
 
-Displays the BlogHub introduction and latest blog posts.
+The backend server runs on:
 
-### Login
+```text
+http://localhost:5000
+```
 
-Allows users to enter their email and password.
+### Frontend
 
-### Register
+1. Open the project in VS Code.
+2. Open `frontend/pages/index.html`.
+3. Right-click the file.
+4. Select **Open with Live Server**.
+5. The BlogHub website will open in your browser.
 
-Allows new users to create an account.
+## API Testing
 
-### Dashboard
+The REST APIs were tested successfully using **Postman**.
 
-Displays blog statistics and available blog posts.
+Tested APIs:
 
-### Create Blog
-
-Allows users to enter a blog title, category, and content.
-
-## Future Improvements
-
-- Add backend integration
-- Add database support
-- Implement real user authentication
-- Store blogs permanently
-- Add edit and delete functionality
-- Add search functionality
+* User Registration
+* User Login
+* Create Blog
+* View Blogs
 
 ## Internship
 
-Developed as part of the Codomax Digital Solutions Internship.
+This project was developed as part of the **Codomax Digital Solutions Internship**.
 
 ## Author
 
-Namana Pujitha
+**Namana Pujitha**
