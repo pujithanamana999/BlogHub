@@ -23,7 +23,7 @@
             <a href="index.html">Home</a>
             <a href="dashboard.html">Dashboard</a>
             <a href="create-blog.html">Create Blog</a>
-            <a href="login.html">Logout</a>
+            <a href="#" id="logoutLink">Logout</a>
         </nav>
 
     </header>
@@ -32,7 +32,7 @@
     <!-- Dashboard -->
     <main class="page">
 
-        <h1>Welcome to BlogHub</h1>
+        <h1 id="welcomeMessage">Welcome to BlogHub</h1>
 
         <p>
             Manage your blogs and create new posts from your dashboard.
@@ -48,6 +48,18 @@
 
         </div>
 
+
+        <!-- Blogs Section -->
+        <section class="blogs-section">
+
+            <h2>Latest Blogs</h2>
+
+            <div id="blogsContainer">
+                <p>Loading blogs...</p>
+            </div>
+
+        </section>
+
     </main>
 
 
@@ -59,6 +71,10 @@
         </p>
 
     </footer>
+
+
+    <!-- JavaScript -->
+    <script src="../js/script.js"></script>
 
 </body>
 

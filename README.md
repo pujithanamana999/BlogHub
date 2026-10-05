@@ -1,27 +1,23 @@
 # BlogHub
 
-BlogHub is a responsive full-stack Blog Application developed using **HTML, CSS, JavaScript, Node.js, and Express.js**.
+BlogHub is a full-stack blogging web application developed as part of the Codomax Digital Solutions Internship.
 
-## Project Description
-
-BlogHub allows users to register an account, login, access a dashboard, create blog posts, and view blogs.
-
-The project was developed as part of the **Codomax Digital Solutions Internship**.
+The application allows users to register and login securely, create blog posts, view all available blogs, and read individual blog details. The project integrates a Node.js and Express.js backend with MongoDB Atlas for database management.
 
 ## Features
 
-* Responsive Home Page
 * User Registration
+* Secure Password Hashing using bcrypt
 * User Login
-* Dashboard
-* Create Blog
-* View Blogs
+* Login State Management
+* User Logout
+* Protected Dashboard Access
+* Create Blog Posts
+* Store Blog Posts in MongoDB
+* Retrieve All Blogs
+* Individual Blog Details Page
 * Blog Categories
-* REST APIs
-* Frontend and Backend Integration
-* Basic JavaScript Form Validation
-* Responsive Design
-* Interactive Navigation
+* Responsive User Interface
 
 ## Technologies Used
 
@@ -30,42 +26,31 @@ The project was developed as part of the **Codomax Digital Solutions Internship*
 * HTML5
 * CSS3
 * JavaScript
-* VS Code
-* Live Server
 
 ### Backend
 
 * Node.js
 * Express.js
 * REST APIs
-* CORS
-* dotenv
 
-## API Endpoints
+### Database
 
-### User Registration
+* MongoDB Atlas
+* Mongoose
 
-```text
-POST /api/register
-```
+### Security
 
-### User Login
+* bcrypt password hashing
+* Input validation
+* Protected dashboard access
 
-```text
-POST /api/login
-```
+### Tools
 
-### Create Blog
-
-```text
-POST /api/blogs
-```
-
-### View Blogs
-
-```text
-GET /api/blogs
-```
+* Git
+* GitHub
+* Visual Studio Code
+* Postman
+* MongoDB Atlas
 
 ## Project Structure
 
@@ -73,76 +58,156 @@ GET /api/blogs
 BlogHub/
 │
 ├── frontend/
-│   ├── pages/
+│   ├── html/
 │   │   ├── index.html
 │   │   ├── login.html
 │   │   ├── register.html
 │   │   ├── dashboard.html
 │   │   ├── create-blog.html
-│   │   └── blogs.html
+│   │   └── blog-details.html
 │   │
 │   ├── css/
 │   │   └── style.css
 │   │
-│   ├── js/
-│   │   └── script.js
-│   │
-│   └── images/
+│   └── js/
+│       └── script.js
 │
 ├── backend/
-│   ├── controllers/
+│   ├── config/
+│   │   └── db.js
+│   │
+│   ├── models/
+│   │   ├── User.js
+│   │   └── Blog.js
+│   │
 │   ├── routes/
 │   │   ├── authRoutes.js
 │   │   └── blogRoutes.js
 │   │
-│   ├── package.json
-│   └── server.js
+│   ├── controllers/
+│   │
+│   ├── .env
+│   ├── server.js
+│   └── package.json
 │
-├── .gitignore
 └── README.md
 ```
 
-## How to Run
+## Application Flow
 
-### Backend
-
-Open the terminal in the project folder:
-
-```bash
-cd backend
-npm install
-node server.js
-```
-
-The backend server runs on:
+### User Authentication
 
 ```text
-http://localhost:5000
+Register
+   ↓
+Backend API
+   ↓
+bcrypt Password Hashing
+   ↓
+MongoDB Atlas
+   ↓
+User Account Created
 ```
 
-### Frontend
+### Login
 
-1. Open the project in VS Code.
-2. Open `frontend/pages/index.html`.
-3. Right-click the file.
-4. Select **Open with Live Server**.
-5. The BlogHub website will open in your browser.
+```text
+Login
+   ↓
+Backend API
+   ↓
+Password Verification
+   ↓
+Login Successful
+   ↓
+Dashboard
+```
 
-## API Testing
+### Blog Management
 
-The REST APIs were tested successfully using **Postman**.
+```text
+Create Blog
+   ↓
+POST /api/blogs
+   ↓
+MongoDB Atlas
+   ↓
+Blog Stored
+```
 
-Tested APIs:
+### Blog Retrieval
+
+```text
+Dashboard
+   ↓
+GET /api/blogs
+   ↓
+MongoDB
+   ↓
+All Blogs Displayed
+   ↓
+Read More
+   ↓
+GET /api/blogs/:id
+   ↓
+Blog Details
+```
+
+## API Endpoints
+
+| Method | Endpoint         | Purpose                |
+| ------ | ---------------- | ---------------------- |
+| POST   | `/api/register`  | Register a new user    |
+| POST   | `/api/login`     | Authenticate user      |
+| POST   | `/api/blogs`     | Create a new blog      |
+| GET    | `/api/blogs`     | Retrieve all blogs     |
+| GET    | `/api/blogs/:id` | Retrieve a single blog |
+
+## Database
+
+MongoDB Atlas is used as the cloud database.
+
+The application stores:
+
+### Users
+
+* Name
+* Email
+* Hashed Password
+
+### Blogs
+
+* Title
+* Content
+* Category
+* Author
+* Created Date
+* Updated Date
+
+Passwords are never stored as plain text. They are hashed using bcrypt before being stored in the database.
+
+## Testing
+
+The backend APIs were tested using Postman.
+
+The following operations were tested:
 
 * User Registration
 * User Login
-* Create Blog
-* View Blogs
+* Blog Creation
+* Retrieve All Blogs
+* Retrieve Individual Blog
+
+## Project Outcome
+
+BlogHub demonstrates the integration of a responsive frontend, RESTful backend APIs, secure password handling, and MongoDB database integration into a complete full-stack web application.
 
 ## Internship
 
-This project was developed as part of the **Codomax Digital Solutions Internship**.
+Developed as part of the **Codomax Digital Solutions Internship**.
 
 ## Author
 
-**Namana Pujitha**
+**Pujitha**
+B.Tech CSE – Cyber Security
+Swarnandhra College of Engineering and Technology

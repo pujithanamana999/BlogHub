@@ -123,12 +123,21 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         const data = await response.json();
 
         if (response.ok) {
-            alert(data.message);
 
-            console.log("Login Response:", data);
+    // Save logged-in user
+    localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify(data.user)
+    );
 
-            window.location.href = "dashboard.html";
-        } else {
+    alert(data.message);
+
+    console.log("Login Response:", data);
+
+    window.location.href = "dashboard.html";
+
+}
+         else {
             alert(data.message);
         }
 
